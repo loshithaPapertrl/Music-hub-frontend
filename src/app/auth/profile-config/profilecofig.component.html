@@ -1,0 +1,150 @@
+<div class="wrapper">
+    <div class="page-header page-header-small" filter-color="orange">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('assets/img/bg5.jpg') ;">
+        </div>
+        <div class="container">
+            <div class="content-center">
+                <div class="photo-container">
+                    <img src="assets/img/sanuka.jpg" alt="">
+                </div>
+                <h3 class="title">Sanuka Wickramasinghe</h3>
+                <p class="category">Singer</p>
+                <div class="content">
+                    <div class="social-description">
+                        <h2>26</h2>
+                        <p>Follows</p>
+                    </div>
+                    <div class="social-description">
+                        <h2>26</h2>
+                        <p>Followings</p>
+                    </div>
+                    <div class="social-description">
+                        <h2>9.5</h2>
+                        <p>Ratings</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+          <div class="button-container">
+              <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
+              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on youtube">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+                <i class="fab fa-spotify"></i>
+              </a>
+          </div>
+          <h3 class="title">About me</h3>
+          <h5 class="description">Sri Lankan singer known for songs like "Saragaye", "Sansara sihine" and "Perawadanak". He is represented by Singha Records. </h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title text-center"> Configurations </h4>
+                </div>
+            </div>
+<!--            profile details -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Profile Detail</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Profile Picture</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="profilePicture" accept="image/*">
+                                        <label class="custom-file-label" for="profilePicture">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Profession</label>
+                                    <select class="form-control" id="profession">
+                                        <option value="vocalist">Vocalist</option>
+                                        <option value="lyricist">Lyricist</option>
+                                        <option value="producer">Producer</option>
+                                        <option value="player">Player</option>
+                                        <option value="rapper">Rapper</option>
+                                        <option value="recording-engineer">Recording Engineer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Genres</label>
+                                    <input type="text" class="form-control" id="genres" placeholder="Enter genres">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>About</label>
+                                    <textarea class="form-control" id="about" rows="3" placeholder="Enter about"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Youtube Link</label>
+                                    <input type="text" class="form-control" id="youtubeLink" placeholder="Enter Youtube link">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Moods</label>
+                                    <input type="text" class="form-control" id="moods" placeholder="Enter moods">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Spotify Link</label>
+                                    <input type="text" class="form-control" id="spotifyLink" placeholder="Enter Spotify link">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+
+            <!--        profile details -->
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Add to your timeline</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="timelineImage">Image (JPG or PNG)</label>
+                            <input type="file" class="form-control-file" id="timelineImage" accept="image/jpeg,image/png">
+                        </div>
+                        <div class="form-group">
+                            <label for="timelineAudio">Audio (MP3)</label>
+                            <input type="file" class="form-control-file" id="timelineAudio" accept="audio/mp3">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add to timeline</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed and Coded by Loshitha hasaral
+
+            </div>
+        </div>
+    </footer>
+</div>
