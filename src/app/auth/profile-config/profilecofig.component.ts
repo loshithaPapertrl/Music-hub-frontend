@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
+import {RegisterService} from "../../services/register-service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-profile',
@@ -14,8 +16,21 @@ export class ProfileConfigComponent implements OnInit {
     data : Date = new Date();
     focus;
     focus1;
+    saveProfileDetail:FormGroup;
+    private profilePicture: any;
 
-    constructor() { }
+    constructor(public formBuilder: FormBuilder, public registerService: RegisterService) {
+
+        this.saveProfileDetail = this.formBuilder.group({
+          profilePicture: [],
+          profession: [null],
+          genres: [null],
+          moods: [null],
+          about: [null],
+          youtubeLink: [null],
+          spotifyLink: [null]
+        });
+    }
 
     ngOnInit() {
         var rellaxHeader = new Rellax('.rellax-header');
@@ -32,4 +47,18 @@ export class ProfileConfigComponent implements OnInit {
         navbar.classList.remove('navbar-transparent');
     }
 
+    saveProfile(){
+        this.registerService.saveProfile(this.saveProfileDetail.value).subscribe((res: any) => {
+            console.log(res)
+        }, error => {
+        });
+    }
+
+    uploadProf(event: any) {
+        const file: File = event.target.files[0];
+        console.log(file)
+        this.saveProfileDetail.patchValue({
+            profilePicture: file
+        })
+    }
 }

@@ -12,9 +12,11 @@ export class LandingComponent implements OnInit {
   data : Date = new Date();
   focus;
   focus1;
-  registerUserForm:FormGroup
+  registerUserForm:FormGroup;
+
 
   constructor(public formBuilder: FormBuilder,public registerService: RegisterService ) {
+
     this.registerUserForm = this.formBuilder.group({
       firstName: [null, Validators.required],
       lastName: [null],
@@ -35,9 +37,8 @@ export class LandingComponent implements OnInit {
     body.classList.add('landing-page');
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.add('navbar-transparent');
-
-
   }
+
   ngOnDestroy(){
     var body = document.getElementsByTagName('body')[0];
     body.classList.remove('landing-page');

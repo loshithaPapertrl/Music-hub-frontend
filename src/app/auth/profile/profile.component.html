@@ -39,70 +39,26 @@
           </div>
           <h3 class="title">About me</h3>
           <h5 class="description">Sri Lankan singer known for songs like "Saragaye", "Sansara sihine" and "Perawadanak". He is represented by Singha Records. </h5>
-<!--            <div class="row">-->
-<!--                <div class="col-md-12">-->
-<!--                    <h4 class="title text-center">Talents</h4>-->
-<!--                      <ngb-tabset [justify]="'center'" type="pills" class="nav nav-pills nav-pills-primary  nav-pills-just-icons justify-content-center tab-space">-->
-<!--                          <ngb-tab>-->
-<!--                            <ng-template ngbTabTitle>-->
-<!--                              <i class="now-ui-icons design_image"></i>-->
-<!--                            </ng-template>-->
-<!--                              <ng-template ngbTabContent>-->
-<!--                                <div class="row">-->
-<!--                                    <img src="assets/img/Lyrics.png" alt="" class="img-raised">-->
-<!--                                </div>-->
-<!--                              </ng-template>-->
-<!--                          </ngb-tab>-->
-<!--                      </ngb-tabset>-->
-<!--                </div>-->
-<!--            </div>-->
-            <div class="container bootstrap snippets bootdey">
+            <div class="container">
                 <div class="row">
-                    <div class="profile-nav col-md-4">
-<!-- Review                        -->
-                        <div class="container review">
-                            <div class="mgb-40 padb-30 auto-invert line-b-4 align-center">
-                                <h1 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Customer Reviews</h1>
+                    <div class="profile-nav col-4">
+                <!-- Review    -->
+                        <div class="container review align-left">
+                            <div class="auto-invert line-b-4 text_align-center">
+                                <h4 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Customer Reviews</h4>
                             </div>
                             <ul class="hash-list cols-3 cols-1-xs pad-30-all align-center text-sm">
-                                <li>
+                                <li *ngFor="let review of reviews">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]">
-                                    <p class="fs-110 font-cond-l" contenteditable="false">" Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. "</p>
-                                    <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">Martha Stewart</h5>
-                                    <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Business Woman - New York</small>
-                                </li>
-                                <li>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]">
-                                    <p class="fs-110 font-cond-l" contenteditable="false">" Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. "</p>
-                                    <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">Ariana Menage</h5>
-                                    <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Recording Artist - Los Angeles</small>
-                                </li>
-                                <li>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]">
-                                    <p class="fs-110 font-cond-l" contenteditable="false">" Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. "</p>
-                                    <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">Sean Carter</h5>
-                                    <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Fund Manager - Chicago</small>
+                                    <p class="fs-110 font-cond-l review-text" contenteditable="false">{{review.reviewText}}</p>
+                                    <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false"> </h5>
+                                    <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">{{review.reviewerName}}</small>
                                 </li>
                             </ul>
                         </div>
-<!-- Review                       -->
+            <!-- Review   -->
                     </div>
-                    <div class="profile-info col-md-8 border-left-2">
-                        <div class="panel">
-                            <div class="post-box">
-                                <div class="post-header">
-                                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
-                                    <h3 class="ml-3">John Doe</h3>
-                                </div>
-                                <div class="post-body">
-                                    <textarea class="form-control" placeholder="What's on your mind?" rows="3"></textarea>
-                                    <div class="post-actions d-flex justify-content-between align-items-center mt-3">
-                                        <button class="btn btn-primary btn-sm">Photo/Video</button>
-                                        <button class="btn btn-primary btn-sm">Post</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="profile-info col-8 border-left-2">
                         <div class="panel">
                             <div class="panel-body bio-graph-info">
 <!--                                           post here-->
@@ -115,12 +71,11 @@
                                         </div>
                                     </div>
                                     <div class="post-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel metus vel odio bibendum faucibus. Nullam gravida justo vel odio malesuada, nec laoreet purus finibus. Ut bibendum enim eget urna convallis, vel vehicula nulla bibendum. Curabitur vitae sodales nisl, et rhoncus felis. Sed rutrum eros non turpis tempor, sed molestie justo pulvinar. Nullam pharetra nunc vitae risus gravida, in mollis urna aliquet. </p>
+                                        <p> Latest song that I wrote </p>
                                         <img src="https://via.placeholder.com/500x250" alt="Post Image" class="w-100">
                                         <div class="post-actions mt-3">
                                             <button class="btn btn-primary btn-sm mr-2">Like</button>
                                             <button class="btn btn-primary btn-sm mr-2">Comment</button>
-                                            <button class="btn btn-primary btn-sm">Share</button>
                                         </div>
                                         <div class="comment-bar mt-3">
                                             <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
@@ -129,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--                                           post here-->
+                                <!--   post here-->
                             </div>
                         </div>
                     </div>

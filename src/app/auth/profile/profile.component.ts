@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
+import {ProfileServiceService} from "../../services/profile-service.service";
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +15,12 @@ export class ProfileComponent implements OnInit {
     data : Date = new Date();
     focus;
     focus1;
+  reviewForm: any;
+  reviews:[] = [];
 
-    constructor() { }
+    constructor(public profileServiceService:ProfileServiceService) {
+      this.getReviews();
+    }
 
     ngOnInit() {
       var rellaxHeader = new Rellax('.rellax-header');
@@ -32,5 +37,13 @@ export class ProfileComponent implements OnInit {
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.remove('navbar-transparent');
     }
+
+  getReviews(){
+    this.profileServiceService.getReviews(this.reviews).subscribe((res: any) => {
+      this.reviews=res.body
+      console.log(this.reviews)
+    }, error => {
+    });
+  }
 
 }
