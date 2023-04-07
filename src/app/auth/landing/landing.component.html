@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <div class="section section-contact-us text-center">
+    <div class="section section-contact-us text-center" *ngIf="!authService.isLoggedIn()">
         <div class="container">
             <p class="description">Your talents is very important to us.</p>
             <div class="card">

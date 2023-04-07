@@ -14,6 +14,11 @@ export class AuthService {
     return this.http.post('http://localhost:8080/api/v1/auth/authenticate', obj)
   }
 
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token; // convert token to boolean
+  }
+
   // login(email: string, password: string) {
   //   return this.http.post('http://localhost:8080/api/v1/auth/authenticate', { email, password })
   // }

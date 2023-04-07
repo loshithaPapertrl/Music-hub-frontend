@@ -15,7 +15,7 @@ export class CustomInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     // Exclude JWT token for login requests
-    if (request.url.endsWith('/authenticate')) {
+    if (request.url.endsWith('/authenticate') || request.url.includes('/user/')) {
       return next.handle(request);
     }
 

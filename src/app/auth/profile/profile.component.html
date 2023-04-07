@@ -5,7 +5,7 @@
         <div class="container">
             <div class="content-center">
                 <div class="photo-container">
-                    <img src="assets/img/sanuka.jpg" alt="">
+                    <img [src]=" user.profilePicture" alt="">
                 </div>
                 <h3 class="title">Sanuka Wickramasinghe</h3>
                 <p class="category">Singer</p>
@@ -62,7 +62,7 @@
                         <div class="panel">
                             <div class="panel-body bio-graph-info">
 <!--                                           post here-->
-                                <div class="post">
+                                <div class="post" *ngFor="let post of posts ">
                                     <div class="post-header">
                                         <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
                                         <div class="post-info ml-3">
@@ -71,8 +71,9 @@
                                         </div>
                                     </div>
                                     <div class="post-body">
-                                        <p> Latest song that I wrote </p>
-                                        <img src="https://via.placeholder.com/500x250" alt="Post Image" class="w-100">
+                                        <p> {{post.about}} </p>
+<!--                                        <div [style.backgroundImage]="'url('+ post.logoUrl +')'"></div>-->
+                                        <img [src]=" post.logoUrl" alt="Post Image" class="w-100">
                                         <div class="post-actions mt-3">
                                             <button class="btn btn-primary btn-sm mr-2">Like</button>
                                             <button class="btn btn-primary btn-sm mr-2">Comment</button>

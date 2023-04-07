@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "../../services/register-service";
+import {AuthService} from "../../services/auth-service.service";
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +16,8 @@ export class LandingComponent implements OnInit {
   registerUserForm:FormGroup;
 
 
-  constructor(public formBuilder: FormBuilder,public registerService: RegisterService ) {
+  constructor(public formBuilder: FormBuilder,
+              public registerService: RegisterService, public authService: AuthService ) {
 
     this.registerUserForm = this.formBuilder.group({
       firstName: [null, Validators.required],
@@ -25,7 +27,8 @@ export class LandingComponent implements OnInit {
       phoneNumber: [null],
       email: [null],
       username: [null],
-      password: [null,]
+      password: [null],
+      role: ['user']
     });
 
   }
