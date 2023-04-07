@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth-service.service";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,15 @@ export class LoginComponent implements OnInit {
     data : Date = new Date();
     focus;
     focus1;
-    email: any;
-    password: any;
     errorMessage: any;
+    loginObj:any={
+        email:'',
+        password:''
+    };
 
     constructor(private authService: AuthService,
-                private router: Router) { }
+                private router: Router,private fb:FormBuilder, ) {
+    }
 
     ngOnInit() {
         var body = document.getElementsByTagName('body')[0];
@@ -35,18 +39,13 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        this.authService.login(this.email, this.password).subscribe((res:any) => {
-            console.log(res);
-            const token = res.token;
-            this.authService.setToken(token);
-            this.router.navigate(['/auth/profile-config']);
-
-        })
-            // .then(() => {
-            //     this.router.navigate(['/auth/profile-config']);
-            // })
-            // .catch((error) => {
-            //     this.errorMessage = error.message;
-            // });
+            this.authService.login(this.loginObj)
+                .subscribe(
+                    (res:any) => {
+                        console.log('res',res);
+                        localStorage.setItem('token',res.token)
+                        this.router.navigateByUrl('/account/profile-cofig')
+                    }
+                );
     }
 }

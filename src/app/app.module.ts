@@ -10,6 +10,8 @@ import { ExamplesModule } from './auth/examples.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import {RegisterService} from "./services/register-service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {CustomInterceptor} from "./services/custom-interceptor.service";
 
 @NgModule({
     declarations: [
@@ -25,7 +27,10 @@ import {RegisterService} from "./services/register-service";
         ComponentsModule,
         ExamplesModule
     ],
-    bootstrap: [AppComponent],
-    providers: [RegisterService]
+    providers: [RegisterService,{
+        provide: HTTP_INTERCEPTORS, useClass:CustomInterceptor,
+        multi:true
+    }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
