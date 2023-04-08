@@ -479,6 +479,7 @@ ul.summary-list > li:last-child  {
   border: 1px solid #ccc;
   padding: 16px;
   background-color: #fff;
+  margin-bottom: 30px;
 
   .post-header {
     display: flex;
@@ -545,4 +546,178 @@ ul.summary-list > li:last-child  {
 
 //post
 
+//Review
+.review{
 
+  //border: 1px solid black;
+  //height: 200px;
+  //width: 100%;
+  //background-color: #00bbff;
+
+}
+
+/* User Reviews */
+.card-testimonial {
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  width: 90%;
+  padding-top: 50px;
+}
+.card-testimonial .card-testimonial-avatar {
+  margin-top: -50px;
+}
+.card-testimonial .card-testimonial-content {
+  padding: 10px 20px 40px;
+}
+.card-testimonial .card-testimonial-content p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #6c757d;
+}
+.card-testimonial .card-testimonial-content .card-testimonial-stars {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.card-testimonial .card-testimonial-content .card-testimonial-stars .filled-stars {
+  color: #f8ce0b;
+}
+.card-testimonial .card-testimonial-content .card-testimonial-author {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+.card-testimonial .card-testimonial-content .card-testimonial-job {
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 400;
+}
+.card-testimonial .card-testimonial-rotate {
+  transform: rotate(-15deg);
+  background-color: #f8ce0b;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  margin-left: -40px;
+  text-align: center;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+.card-testimonial .card-testimonial-rotate i {
+  font-size: 1.2rem;
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+}
+.see-review{
+  background-color: white;
+  border: none;
+  color: blueviolet;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-review{
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 20px;
+    width: 450px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 6px;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
+  }
+
+  .comment-box{
+
+    padding:5px;
+  }
+
+
+
+  .comment-area textarea{
+    resize: none;
+    border: 1px solid #ad9f9f;
+  }
+
+
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 1px rgb(255, 0, 0) !important;
+  }
+
+  .send {
+    color: #fff;
+    background-color: #ff0000;
+    border-color: #ff0000;
+  }
+
+  .send:hover {
+    color: #fff;
+    background-color: #f50202;
+    border-color: #f50202;
+  }
+
+
+  .rating {
+    display: flex;
+    margin-top: -10px;
+    flex-direction: row-reverse;
+    margin-left: -4px;
+    float: left;
+  }
+
+  .rating>input {
+    display: none
+  }
+
+  .rating>label {
+    position: relative;
+    width: 19px;
+    font-size: 25px;
+    color: #ff0000;
+    cursor: pointer;
+  }
+
+  .rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+  }
+
+  .rating>label:hover:before,
+  .rating>label:hover~label:before {
+    opacity: 1 !important
+  }
+
+  .rating>input:checked~label:before {
+    opacity: 1
+  }
+
+  .rating:hover>input:checked~label:before {
+    opacity: 0.4
+  }
+  .comment-area textarea{
+    padding-left: 10px;
+  }
+}

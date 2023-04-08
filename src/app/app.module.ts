@@ -25,7 +25,7 @@ import {CustomInterceptor} from "./services/custom-interceptor.service";
         RouterModule,
         AppRoutingModule,
         ComponentsModule,
-        ExamplesModule
+        ExamplesModule,
     ],
     providers: [RegisterService,{
         provide: HTTP_INTERCEPTORS, useClass:CustomInterceptor,

@@ -69,7 +69,10 @@ export class ProfileComponent implements OnInit {
   image: any;
   reviews: [] = [];
   posts: any [] = [];
-  user:any = {}
+  user:any = {};
+  showReviews: any = false;
+
+
 
   constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer) {
     this.getReviews();
@@ -153,4 +156,9 @@ export class ProfileComponent implements OnInit {
   //   //   reader.readAsDataURL(image);
   //   // }
   // }
+
+
+  toggleReviews() {
+    this.showReviews = !this.showReviews;
+  }
 }

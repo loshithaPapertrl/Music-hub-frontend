@@ -42,19 +42,66 @@
             <div class="container">
                 <div class="row">
                     <div class="profile-nav col-4">
-                <!-- Review    -->
-                        <div class="container review align-left">
-                            <div class="auto-invert line-b-4 text_align-center">
-                                <h4 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Customer Reviews</h4>
+                <!--    Add review-->
+                        <div class="row add-review">
+
+                            <div class="col-12">
+                                <div class="comment-box ml-2">
+                                    <h4>Add Your Recommendation</h4>
+
+                                    <div class="rating">
+                                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                    </div>
+                                    <div class="comment-area">
+                                        <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea>
+                                    </div>
+                                    <div class="comment-btns mt-2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="pull-right">
+                                                    <button class="btn btn-success send btn-sm">Submit <i class="fa fa-long-arrow-right ml-1"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <ul class="hash-list cols-3 cols-1-xs pad-30-all align-center text-sm">
-                                <li *ngFor="let review of reviews">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]">
-                                    <p class="fs-110 font-cond-l review-text" contenteditable="false">{{review.reviewText}}</p>
-                                    <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false"> </h5>
-                                    <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">{{review.reviewerName}}</small>
-                                </li>
-                            </ul>
+                        </div>
+                <!-- Add review-->
+
+
+                <!-- See Review    -->
+
+                        <div>
+                            <button class="see-review" (click)="toggleReviews()">See all reviews</button>
+                            <div class="review" *ngIf="showReviews">
+                                <div class="item" *ngFor="let review of reviews">
+                                    <div class="card card-testimonial">
+                                        <div class="card-avatar">
+                                            <a href="#pablo">
+                                                <img class="img rounded-circle" src="https://randomuser.me/api/portraits/women/33.jpg" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{review.reviewerName}}</h5>
+                                            <p class="card-description">
+                                                {{review.reviewText}}
+                                            </p>
+                                            <div class="rating">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
             <!-- Review   -->
                     </div>
