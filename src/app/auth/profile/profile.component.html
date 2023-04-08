@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="section">
-        <div class="container">
+        <div class="container mt-5">
           <div class="button-container">
               <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
               <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on youtube">
@@ -111,9 +111,9 @@
 <!--                                           post here-->
                                 <div class="post" *ngFor="let post of posts ">
                                     <div class="post-header">
-                                        <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
+                                        <img [src]=" user.profilePicture" alt="Profile Picture" class="rounded-circle" style="height: 50px; width: 50px;">
                                         <div class="post-info ml-3">
-                                            <h3>John Doe</h3>
+                                            <h3>{{post.userName}}</h3>
                                             <p>2 hours ago</p>
                                         </div>
                                     </div>
@@ -123,7 +123,12 @@
                                         <img [src]=" post.logoUrl" alt="Post Image" class="w-100">
                                         <div class="post-actions mt-3">
                                             <button class="btn btn-primary btn-sm mr-2">Like</button>
-                                            <button class="btn btn-primary btn-sm mr-2">Comment</button>
+                                        </div>
+                                        <div class="comment" *ngFor="let comment of post.comments">
+                                            <div class="comment-info ml-3">
+                                                <h6>{{comment.commentedBy}}</h6>
+                                                <p>{{comment.comment}}</p>
+                                            </div>
                                         </div>
                                         <div class="comment-bar mt-3">
                                             <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">

@@ -20,7 +20,7 @@ export class ProfileServiceService {
     }
 
   getProfileDetails(userId : any) {
-    return this.http.get('http://localhost:8080/user/get_profile_details',
+    return this.http.get('http://localhost:8080/api/v1/auth/get_profile_details',
         {params:{userId: userId},observe: 'response', withCredentials: true});
   }
 }

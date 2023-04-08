@@ -71,6 +71,7 @@ export class ProfileComponent implements OnInit {
   posts: any [] = [];
   user:any = {};
   showReviews: any = false;
+  comments: [] = [];
 
 
 
@@ -100,7 +101,6 @@ export class ProfileComponent implements OnInit {
   getReviews() {
     this.profileServiceService.getReviews(this.reviews).subscribe((res: any) => {
       this.reviews = res.body
-      console.log(this.reviews)
     }, error => {
     });
   }
@@ -108,8 +108,11 @@ export class ProfileComponent implements OnInit {
   getPosts() {
     this.profileServiceService.getPosts(1).subscribe((res: any) => {
       this.posts = res.body
+      this.posts.forEach(post => {
+        this.comments=post.comments
+        console.log( this.comments)
+      })
       this.setImageUrl()
-      console.log(res.body)
     }, error => {
     });
   }
@@ -119,7 +122,6 @@ export class ProfileComponent implements OnInit {
       this.user = res.body
       let objectURL = 'data:image/png;base64,' +  this.user.profilePicture;
       this.user.profilePicture = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      console.log(this.user)
     }, error => {
     });
   }
