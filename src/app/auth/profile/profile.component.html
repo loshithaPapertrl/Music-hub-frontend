@@ -7,8 +7,8 @@
                 <div class="photo-container">
                     <img [src]=" user.profilePicture" alt="">
                 </div>
-                <h3 class="title">Sanuka Wickramasinghe</h3>
-                <p class="category">Singer</p>
+                <h3 class="title">{{user.artistName}}</h3>
+                <p class="category">{{user.profession}}</p>
                 <div class="content">
                     <div class="social-description">
                         <h2>26</h2>
@@ -38,7 +38,7 @@
               </a>
           </div>
           <h3 class="title">About me</h3>
-          <h5 class="description">Sri Lankan singer known for songs like "Saragaye", "Sansara sihine" and "Perawadanak". He is represented by Singha Records. </h5>
+          <h5 class="description">{{user.about}} </h5>
             <div class="container">
                 <div class="row">
                     <div class="profile-nav col-4">
@@ -138,6 +138,38 @@
                                     </div>
                                 </div>
                                 <!--   post here-->
+                                <!-- mp3 as post-->
+
+                                <div class="post">
+                                    <div class="post-header">
+                                        <img [src]=" user.profilePicture" alt="Profile Picture" class="rounded-circle" style="height: 50px; width: 50px;">
+                                        <div class="post-info ml-3">
+                                            <h3>loshitha</h3>
+                                            <p>2 hours ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="post-body">
+                                        <p> first song </p>
+                                        <div class="post-actions mt-3">
+                                            <audio controls>
+                                                <source type="audio/mpeg">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        </div>
+                                        <div class="comment">
+                                            <div class="comment-info ml-3">
+                                                <h6>kasun</h6>
+                                                <p>nice one!!!</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment-bar mt-3">
+                                            <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
+                                            <input type="text" class="form-control ml-3" placeholder="Write a comment...">
+                                            <button class="btn btn-primary btn-sm ml-3">Post</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mp3 as post-->
                             </div>
                         </div>
                     </div>

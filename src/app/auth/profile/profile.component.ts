@@ -72,6 +72,7 @@ export class ProfileComponent implements OnInit {
   user:any = {};
   showReviews: any = false;
   comments: [] = [];
+  audioByteArray: Uint8Array;
 
 
 
@@ -117,6 +118,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * this method use for get main profile details
+   */
+
   getProfileDetails() {
     this.profileServiceService.getProfileDetails(1).subscribe((res: any) => {
       this.user = res.body
@@ -127,12 +132,26 @@ export class ProfileComponent implements OnInit {
   }
 
 
+  /**
+   * this method use for get i byte array and show as image
+   */
+
   setImageUrl() {
     this.posts.forEach((value,index) => {
       let objectURL = 'data:image/png;base64,' + value.postContent;
       this.posts[index].logoUrl  = this.sanitizer.bypassSecurityTrustUrl(objectURL);
     })
   }
+
+  get audioSrc(): string {
+    const blob = new Blob([this.audioByteArray], { type: 'audio/mpeg' });
+    return URL.createObjectURL(blob);
+  }
+
+  /**
+   * support function to set image
+   * @param buffer
+   */
 
   public getBase64ImageFromArray(buffer: any): string {
     let binary = '';
@@ -143,22 +162,6 @@ export class ProfileComponent implements OnInit {
     }
     return 'data:image/png;base64,' + window.btoa(binary);
   }
-
-  //
-  // createLogoImageUrl(image: Blob, index) {
-  //   const reader = new FileReader();
-  //   reader.addEventListener('load', () => {
-  //     this.posts[index].logoUrl = reader.result;
-  //     this.posts[index].logoUrl = new Blob(this.posts[index].logoUrl)
-  //     console.log( this.posts[index].logoUrl)
-  //   }, false);
-  //
-  //   reader.readAsDataURL(image);
-  //   // if (image.size > 42) {
-  //   //   reader.readAsDataURL(image);
-  //   // }
-  // }
-
 
   toggleReviews() {
     this.showReviews = !this.showReviews;
