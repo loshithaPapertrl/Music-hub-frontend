@@ -13,6 +13,7 @@ import { ExamplesComponent } from './examples.component';
 import { ProfileConfigComponent } from './profile-config/profilecofig.component';
 import {RegisterService} from "../services/register-service";
 import {HttpClientModule} from "@angular/common/http";
+import {UserAccountsComponent} from "./user-accounts/user-accounts.component";
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import {HttpClientModule} from "@angular/common/http";
         LoginComponent,
         ExamplesComponent,
         ProfileComponent,
-        ProfileConfigComponent
+        ProfileConfigComponent,
+        UserAccountsComponent
     ],
     providers: [RegisterService]
 })
