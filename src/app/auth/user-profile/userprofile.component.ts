@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
 import {ProfileServiceService} from "../../services/profile-service.service";
 import {DomSanitizer} from "@angular/platform-browser";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-userprofile',
+  templateUrl: './userprofile.component.html',
+  styleUrls: ['./userprofile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class UserprofileComponent implements OnInit {
   zoom: number = 14;
   lat: number = 44.445248;
   lng: number = 26.099672;
@@ -73,11 +74,12 @@ export class ProfileComponent implements OnInit {
   showReviews: any = false;
   comments: [] = [];
   audioByteArray: Uint8Array;
+  userId:any
 
 
 
-  constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer) {
-
+  constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer,private activeRoute: ActivatedRoute) {
+    this.getReviews();
   }
 
   ngOnInit() {
@@ -87,10 +89,10 @@ export class ProfileComponent implements OnInit {
     body.classList.add('profile-page');
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.add('navbar-transparent');
+    this.userId = this.activeRoute.snapshot.queryParamMap.get('userId');
     this.getProfileDetails();
     this.getPosts();
     this.getReviews();
-
   }
 
   ngOnDestroy() {
@@ -101,19 +103,18 @@ export class ProfileComponent implements OnInit {
   }
 
   getReviews() {
-    this.profileServiceService.getPersonalReviews().subscribe((res: any) => {
+    this.profileServiceService.getReviews(this.userId).subscribe((res: any) => {
+      console.log(res.body)
       this.reviews = res.body
-      console.log(this.reviews)
     }, error => {
     });
   }
 
   getPosts() {
-    this.profileServiceService.getPosts(1).subscribe((res: any) => {
+    this.profileServiceService.getPosts(this.userId).subscribe((res: any) => {
       this.posts = res.body
       this.posts.forEach(post => {
         this.comments=post.comments
-        console.log( this.comments)
       })
       this.setImageUrl()
     }, error => {
@@ -125,7 +126,7 @@ export class ProfileComponent implements OnInit {
    */
 
   getProfileDetails() {
-    this.profileServiceService.getProfileDetails(1).subscribe((res: any) => {
+    this.profileServiceService.getProfileDetailsByVisitor(this.userId).subscribe((res: any) => {
       this.user = res.body
       let objectURL = 'data:image/png;base64,' +  this.user.profilePicture;
       this.user.profilePicture = this.sanitizer.bypassSecurityTrustUrl(objectURL);

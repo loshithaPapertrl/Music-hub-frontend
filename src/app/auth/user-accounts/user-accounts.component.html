@@ -29,7 +29,7 @@
                 <div class="container mt-10">
                     <div class="row">
                         <!-- Single Advisor-->
-                        <div class="col-12 col-sm-6 col-lg-3" *ngFor="let user of users">
+                        <div class="col-12 col-sm-6 col-lg-3" *ngFor="let user of users" (click)="onClickUser(user.id)">
                             <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                 <!-- Team Thumb-->
                                 <div class="advisor_thumb"><img [src]=" user.logoUrl" alt="">

@@ -10,6 +10,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import {ProfileConfigComponent} from "./auth/profile-config/profilecofig.component";
 import {UserAccountsComponent} from "./auth/user-accounts/user-accounts.component";
+import {UserprofileComponent} from "./auth/user-profile/userprofile.component";
 
 const routes: Routes =[
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes =[
     { path: 'auth/login',       component: LoginComponent },
     { path: 'account/profile',     component: ProfileComponent },
     { path: 'account/profile-cofig',     component: ProfileConfigComponent },
-    { path: 'user-accounts',     component: UserAccountsComponent }
+    { path: 'user-accounts',     component: UserAccountsComponent },
+    { path: 'user-profile',     component: UserprofileComponent }
 ];
 
 @NgModule({

@@ -11,7 +11,11 @@ export class ProfileServiceService {
 
   getReviews(userId : any) {
     return this.http.get('http://localhost:8080/user/get_user_vise_review',
-        {params:{userId: 1},observe: 'response', withCredentials: true});
+        {params:{userId: userId},observe: 'response', withCredentials: true});
+  }
+  getPersonalReviews() {
+    return this.http.get('http://localhost:8080/api/v1/auth/get_personal_review',
+        {observe: 'response', withCredentials: true});
   }
 
     getPosts(userId : any) {
@@ -23,4 +27,10 @@ export class ProfileServiceService {
     return this.http.get('http://localhost:8080/api/v1/auth/get_profile_details',
         {params:{userId: userId},observe: 'response', withCredentials: true});
   }
+
+  getProfileDetailsByVisitor(userId : any) {
+    return this.http.get('http://localhost:8080/user/get_profile_details_by_visitor',
+        {params:{userId: userId},observe: 'response', withCredentials: true});
+  }
+
 }

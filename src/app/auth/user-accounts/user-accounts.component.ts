@@ -18,8 +18,10 @@ export class UserAccountsComponent implements OnInit {
   focus1;
   users: any [] = [];
   categoryId:any
+  private userId: any;
+  private isClickOnCategory: boolean = false;
 
-  constructor(private sanitizer: DomSanitizer, public userServiceService:UserServiceService,private activeRoute: ActivatedRoute) {
+  constructor(private sanitizer: DomSanitizer, public userServiceService:UserServiceService,private activeRoute: ActivatedRoute,private router: Router,) {
 
 
   }
@@ -75,5 +77,11 @@ export class UserAccountsComponent implements OnInit {
       binary += String.fromCharCode(bytes[i]);
     }
     return 'data:image/png;base64,' + window.btoa(binary);
+  }
+
+  onClickUser(id:any) {
+    this.userId = id
+    this.isClickOnCategory = true
+    this.router.navigate(['/user-profile'],{ queryParams: { userId: this.userId } });
   }
 }

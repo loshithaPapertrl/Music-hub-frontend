@@ -86,8 +86,8 @@ Now Ui Kit Angular
 │   │   │   └── profile
 │   │   │       ├── profile.component.html
 │   │   │       ├── profile.component.scss
-│   │   │       ├── profile.component.spec.ts
-│   │   │       └── profile.component.ts
+│   │   │       ├── userprofile.component.spec.ts
+│   │   │       └── userprofile.component.ts
 │   │   └── shared
 │   │       └── navbar
 │   │           ├── navbar.component.html
