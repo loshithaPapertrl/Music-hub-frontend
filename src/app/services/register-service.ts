@@ -34,4 +34,9 @@ export class RegisterService {
         return this.http.post('http://localhost:8080/api/v1/auth/add_profile_details',
             formData, {observe: 'response', withCredentials: true});
     }
+
+    getCategories() {
+        return this.http.get('http://localhost:8080/user/getAllTalentCategories',
+            {observe: 'response', withCredentials: true});
+    }
 }

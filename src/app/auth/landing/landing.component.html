@@ -17,68 +17,59 @@
                 </div>
             </div>
             <div class="separator separator-primary"></div>
-            <div class="section-story-overview">
+            <div class="section-story-overview" >
+
                 <div class="row">
-                    <div class="col-md-4 talent-card">
-                        <a href="#">
+                    <div class="col-md-4 talent-card" (click)="onClickCategory(2)">
                         <div class="image-container" style="background-image: url('assets/img/landing-page/Lyricist.png')" >
-                            <div class="image-overlay">
+                            <div class="image-overlay" >
                                 <div class="talent-category">Lyricist</div>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    <div class="col-md-4">
-                        <a href="#">
+                    <div class="col-md-4" (click)="onClickCategory(4)">
                         <div class="image-container" style="background-image: url('assets/img/landing-page/mixing engineer.jpg')">
                             <div class="image-overlay">
-                                <div class="talent-category">Mixing Engineer</div>
+                                <div class="talent-category">Player</div>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    <div class="col-md-4">
-                        <a href="#">
+                    <div class="col-md-4" (click)="onClickCategory(3)">
                         <div class="image-container" style="background-image: url('assets/img/landing-page/Producer.jpg')">
                             <div class="image-overlay">
                                 <div class="talent-category">Producer</div>
                             </div>
                         </div>
-                        </a>
                     </div>
 
                 </div>
+
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <a href="#">
+                    <div class="col-md-4" (click)="onClickCategory(5)">
                         <div class="image-container" style="background-image: url('assets/img/landing-page/Rapper.jpg')">
                             <div class="image-overlay">
                                 <div class="talent-category">Rapper</div>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    <div class="col-md-4">
-                        <a href="#">
+                    <div class="col-md-4" (click)="onClickCategory(6)">
                         <div class="image-container" style="background-image: url('assets/img/landing-page/recording engineer.jpg')">
                             <div class="image-overlay">
                                 <div class="talent-category">Recording Engineer</div>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    <div class="col-md-4">
-                        <a href="#">
+                    <div class="col-md-4" (click)="onClickCategory(1)">
                         <div class="image-container" style="background-image: url('assets/img/landing-page/Vocalist.jpg')">
                             <div class="image-overlay">
                                 <div class="talent-category">Vocalist</div>
                             </div>
                         </div>
-                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -183,3 +174,5 @@
         </div>
     </footer>
 </div>
+
+<!--<app-user *ngIf="isClickOnCategory" [categoryId]="categoryId"></app-user>-->

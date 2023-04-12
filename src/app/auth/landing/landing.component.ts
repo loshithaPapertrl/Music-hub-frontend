@@ -16,7 +16,9 @@ export class LandingComponent implements OnInit {
   focus1;
   registerUserForm:FormGroup;
   submitted: boolean = false;
-
+  categories:any[]
+  isClickOnCategory = false;
+  categoryId:any
 
   constructor(public formBuilder: FormBuilder, private router: Router,
               public registerService: RegisterService, public authService: AuthService ) {
@@ -42,6 +44,7 @@ export class LandingComponent implements OnInit {
     body.classList.add('landing-page');
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.add('navbar-transparent');
+    this.getCategories();
   }
 
   ngOnDestroy(){
@@ -70,4 +73,21 @@ export class LandingComponent implements OnInit {
     }
   }
 
+  goToUsers() {
+    this.router.navigateByUrl('user-accounts');
+  }
+
+  getCategories(){
+    this.registerService.getCategories().subscribe((res: any) => {
+      this.categories=res.body
+      console.log(res.body)
+    }, error => {
+    });
+  }
+
+  onClickCategory(number: number) {
+    this.categoryId = number
+    this.isClickOnCategory = true
+    this.router.navigate(['/user-accounts'],{ queryParams: { categoryId: this.categoryId } });
+  }
 }

@@ -4,7 +4,7 @@ import {RegisterService} from "../../services/register-service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
-    selector: 'app-profile',
+    selector: 'app-profileconfig',
     templateUrl: './profilecofig.component.html',
     styleUrls: ['./profilecofig.component.scss']
 })

@@ -109,6 +109,7 @@ export class ProfileComponent implements OnInit {
   getPosts() {
     this.profileServiceService.getPosts(1).subscribe((res: any) => {
       this.posts = res.body
+      console.log(this.posts)
       this.posts.forEach(post => {
         this.comments=post.comments
         console.log( this.comments)

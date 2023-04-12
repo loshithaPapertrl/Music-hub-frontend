@@ -14,6 +14,7 @@ import { ProfileConfigComponent } from './profile-config/profilecofig.component'
 import {RegisterService} from "../services/register-service";
 import {HttpClientModule} from "@angular/common/http";
 import {UserAccountsComponent} from "./user-accounts/user-accounts.component";
+import {RouterLink} from "@angular/router";
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import {UserAccountsComponent} from "./user-accounts/user-accounts.component";
         AgmCoreModule.forRoot({
             apiKey: 'YOUR_KEY_HERE'
         }),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterLink
     ],
     declarations: [
         LandingComponent,
