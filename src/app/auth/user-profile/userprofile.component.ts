@@ -3,6 +3,7 @@ import * as Rellax from 'rellax';
 import {ProfileServiceService} from "../../services/profile-service.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../../services/auth-service.service";
 
 @Component({
   selector: 'app-userprofile',
@@ -78,7 +79,7 @@ export class UserprofileComponent implements OnInit {
 
 
 
-  constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer,private activeRoute: ActivatedRoute) {
+  constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer,private activeRoute: ActivatedRoute,public authService: AuthService) {
     this.getReviews();
   }
 

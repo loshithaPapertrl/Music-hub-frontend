@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="profile-nav col-4">
                 <!--    Add review-->
-                        <div class="row add-review">
+                        <div class="row add-review" *ngIf="authService.isLoggedIn()">
 
                             <div class="col-12">
                                 <div class="comment-box ml-2">

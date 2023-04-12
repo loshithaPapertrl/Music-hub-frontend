@@ -1,5 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {Router} from "@angular/router";
+import {TokenService} from "../../services/token.service";
+import {AuthService} from "../../services/auth-service.service";
 
 @Component({
     selector: 'app-navbar',
@@ -10,7 +13,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element : ElementRef,private router: Router,private tokenService: TokenService,public authService: AuthService) {
         this.sidebarVisible = false;
     }
 
@@ -53,5 +56,13 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    onClickLogout() {
+        // Remove the token from local storage
+        localStorage.removeItem('token');
+        console.log("aaaaaa")
+        // Navigate the user to the login page
+        this.router.navigate(['/landing']);
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth-service.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     };
 
     constructor(private authService: AuthService,
-                private router: Router,private fb:FormBuilder, ) {
+                private router: Router,private fb:FormBuilder,private tokenService: TokenService ) {
     }
 
     ngOnInit() {
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
                 .subscribe(
                     (res:any) => {
                         console.log('res',res);
+                        this.tokenService.setToken(res.token)
                         localStorage.setItem('token',res.token)
                         this.router.navigateByUrl('/account/profile-cofig')
                     }

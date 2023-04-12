@@ -19,6 +19,7 @@ export class CustomInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
 
+
     const localToken = localStorage.getItem('token');
     request = request.clone({headers:request.headers.set('Authorization','Bearer ' +localToken)})
     return next.handle(request);
