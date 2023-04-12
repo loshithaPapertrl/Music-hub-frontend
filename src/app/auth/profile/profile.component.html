@@ -89,19 +89,11 @@
                                         <p> {{post.about}} </p>
 <!--                                        <div [style.backgroundImage]="'url('+ post.logoUrl +')'"></div>-->
                                         <img [src]=" post.logoUrl" alt="Post Image" class="w-100">
-                                        <div class="post-actions mt-3">
-                                            <button class="btn btn-primary btn-sm mr-2">Like</button>
-                                        </div>
                                         <div class="comment" *ngFor="let comment of post.comments">
                                             <div class="comment-info ml-3">
                                                 <h6>{{comment.commentedBy}}</h6>
                                                 <p>{{comment.comment}}</p>
                                             </div>
-                                        </div>
-                                        <div class="comment-bar mt-3">
-                                            <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
-                                            <input type="text" class="form-control ml-3" placeholder="Write a comment...">
-                                            <button class="btn btn-primary btn-sm ml-3">Post</button>
                                         </div>
                                     </div>
                                 </div>

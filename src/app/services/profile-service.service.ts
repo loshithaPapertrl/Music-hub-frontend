@@ -23,9 +23,14 @@ export class ProfileServiceService {
           {params:{userId: userId},observe: 'response', withCredentials: true});
     }
 
-  getProfileDetails(userId : any) {
+    getPersonalPosts() {
+      return this.http.get('http://localhost:8080/api/v1/auth/get_personal_post',
+          {observe: 'response', withCredentials: true});
+    }
+
+  getProfileDetails() {
     return this.http.get('http://localhost:8080/api/v1/auth/get_profile_details',
-        {params:{userId: userId},observe: 'response', withCredentials: true});
+        {observe: 'response', withCredentials: true});
   }
 
   getProfileDetailsByVisitor(userId : any) {

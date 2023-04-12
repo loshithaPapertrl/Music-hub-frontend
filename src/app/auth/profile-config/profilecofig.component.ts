@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
 import {RegisterService} from "../../services/register-service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {ProfileServiceService} from "../../services/profile-service.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-profileconfig',
@@ -18,8 +20,11 @@ export class ProfileConfigComponent implements OnInit {
     focus1;
     saveProfileDetail:FormGroup;
     private profilePicture: any;
+    user:any = {};
+    savePost:FormGroup;
 
-    constructor(public formBuilder: FormBuilder, public registerService: RegisterService) {
+    constructor(public formBuilder: FormBuilder, private sanitizer: DomSanitizer,
+                public registerService: RegisterService,public profileServiceService: ProfileServiceService) {
 
         this.saveProfileDetail = this.formBuilder.group({
           profilePicture: [],
@@ -28,8 +33,15 @@ export class ProfileConfigComponent implements OnInit {
           moods: [null],
           about: [null],
           youtubeLink: [null],
-          spotifyLink: [null]
+          spotifyLink: [null],
+          talentCategory:[null]
         });
+
+        this.savePost=this.formBuilder.group({
+            postType:[null],
+            postContent:[],
+            about:[null]
+        })
     }
 
     ngOnInit() {
@@ -39,6 +51,7 @@ export class ProfileConfigComponent implements OnInit {
         body.classList.add('profile-page');
         var navbar = document.getElementsByTagName('nav')[0];
         navbar.classList.add('navbar-transparent');
+        this.getProfileDetails()
     }
     ngOnDestroy(){
         var body = document.getElementsByTagName('body')[0];
@@ -60,5 +73,40 @@ export class ProfileConfigComponent implements OnInit {
         this.saveProfileDetail.patchValue({
             profilePicture: file
         })
+    }
+
+    /**
+     * this method use for get main profile details
+     */
+
+    getProfileDetails() {
+        this.profileServiceService.getProfileDetails().subscribe((res: any) => {
+            this.user = res.body
+            let objectURL = 'data:image/png;base64,' +  this.user.profilePicture;
+            this.user.profilePicture = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        }, error => {
+        });
+    }
+
+    /**
+     * support function to set image
+     * @param buffer
+     */
+
+    public getBase64ImageFromArray(buffer: any): string {
+        let binary = '';
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return 'data:image/png;base64,' + window.btoa(binary);
+    }
+
+    onClickPost() {
+        this.registerService.savePost(this.saveProfileDetail.value).subscribe((res: any) => {
+            console.log(res)
+        }, error => {
+        });
     }
 }

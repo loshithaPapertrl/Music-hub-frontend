@@ -5,38 +5,38 @@
         <div class="container">
             <div class="content-center">
                 <div class="photo-container">
-                    <img src="assets/img/sanuka.jpg" alt="">
+                    <img [src]=" user.profilePicture"  alt="">
                 </div>
-                <h3 class="title">Sanuka Wickramasinghe</h3>
-                <p class="category">Singer</p>
-                <div class="content">
-                    <div class="social-description">
-                        <h2>26</h2>
-                        <p>Follows</p>
-                    </div>
-                    <div class="social-description">
-                        <h2>26</h2>
-                        <p>Followings</p>
-                    </div>
-                    <div class="social-description">
-                        <h2>9.5</h2>
-                        <p>Ratings</p>
-                    </div>
-                </div>
+                <h3 class="title">{{user.artistName}}</h3>
+                <p class="category" >{{user.profession}}</p>
+<!--                <div class="content">-->
+<!--                    <div class="social-description">-->
+<!--                        <h2>26</h2>-->
+<!--                        <p>Follows</p>-->
+<!--                    </div>-->
+<!--                    <div class="social-description">-->
+<!--                        <h2>26</h2>-->
+<!--                        <p>Followings</p>-->
+<!--                    </div>-->
+<!--                    <div class="social-description">-->
+<!--                        <h2>9.5</h2>-->
+<!--                        <p>Ratings</p>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
     <div class="section">
         <div class="container mt-5">
-          <div class="button-container">
-              <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
-              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on youtube">
-                <i class="fab fa-youtube"></i>
-              </a>
-              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
-                <i class="fab fa-spotify"></i>
-              </a>
-          </div>
+<!--          <div class="button-container">-->
+<!--              <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>-->
+<!--              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on youtube">-->
+<!--                <i class="fab fa-youtube"></i>-->
+<!--              </a>-->
+<!--              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">-->
+<!--                <i class="fab fa-spotify"></i>-->
+<!--              </a>-->
+<!--          </div>-->
           <h3 class="title">About me</h3>
           <h5 class="description">Sri Lankan singer known for songs like "Saragaye", "Sansara sihine" and "Perawadanak". He is represented by Singha Records. </h5>
             <div class="row">
@@ -63,14 +63,14 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Profession</label>
-                                    <select class="form-control" id="profession" formControlName="profession">
-                                        <option value="vocalist">Vocalist</option>
-                                        <option value="lyricist">Lyricist</option>
-                                        <option value="producer">Producer</option>
-                                        <option value="player">Player</option>
-                                        <option value="rapper">Rapper</option>
-                                        <option value="recording-engineer">Recording Engineer</option>
+                                    <label>Select your talent category</label>
+                                    <select class="form-control" id="talent" formControlName="talentCategory">
+                                        <option value="1">Vocalist</option>
+                                        <option value="2">Lyricist</option>
+                                        <option value="3">Producer</option>
+                                        <option value="4">Player</option>
+                                        <option value="5">Rapper</option>
+                                        <option value="5">Recording Engineer</option>
                                     </select>
                                 </div>
                             </div>
@@ -108,6 +108,12 @@
                                     <input type="text" class="form-control" id="spotifyLink" placeholder="Enter Spotify link" formControlName="spotifyLink">
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Profession</label>
+                                    <input type="text" class="form-control" id="profession" placeholder="Enter simply profession" formControlName="profession">
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary" (click)="saveProfile()">Save</button>
                     </form>
@@ -121,7 +127,7 @@
                     <h4 class="card-title">Add to your timeline</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="savePost">
                         <div class="form-group">
                             <label for="timelineImage">Image (JPG or PNG)</label>
                             <input type="file" class="form-control-file" id="timelineImage" accept="image/jpeg,image/png">
@@ -134,7 +140,7 @@
                             <label for="postDescription">Post Description:</label>
                             <textarea class="form-control" id="postDescription" name="postDescription" ngModel required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Post</button>
+                        <button type="submit" class="btn btn-primary" (click)="onClickPost()")>Post</button>
                     </form>
                 </div>
             </div>

@@ -30,6 +30,7 @@ export class RegisterService {
         formData.append('about', profileDto.about);
         formData.append('youtubeLink', profileDto.youtubeLink);
         formData.append('spotifyLink', profileDto.spotifyLink);
+        formData.append('talentCategory', profileDto.talentCategory);
 
         return this.http.post('http://localhost:8080/api/v1/auth/add_profile_details',
             formData, {observe: 'response', withCredentials: true});

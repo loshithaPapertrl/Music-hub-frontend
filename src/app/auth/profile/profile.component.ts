@@ -100,6 +100,10 @@ export class ProfileComponent implements OnInit {
     navbar.classList.remove('navbar-transparent');
   }
 
+  /**
+   * this method use for get all the personal Reviews
+   */
+
   getReviews() {
     this.profileServiceService.getPersonalReviews().subscribe((res: any) => {
       this.reviews = res.body
@@ -108,8 +112,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * this method use for get all the personal post
+   */
+
   getPosts() {
-    this.profileServiceService.getPosts(1).subscribe((res: any) => {
+    this.profileServiceService.getPersonalPosts().subscribe((res: any) => {
       this.posts = res.body
       this.posts.forEach(post => {
         this.comments=post.comments
@@ -125,7 +133,7 @@ export class ProfileComponent implements OnInit {
    */
 
   getProfileDetails() {
-    this.profileServiceService.getProfileDetails(1).subscribe((res: any) => {
+    this.profileServiceService.getProfileDetails().subscribe((res: any) => {
       this.user = res.body
       let objectURL = 'data:image/png;base64,' +  this.user.profilePicture;
       this.user.profilePicture = this.sanitizer.bypassSecurityTrustUrl(objectURL);
