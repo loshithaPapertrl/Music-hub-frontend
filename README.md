@@ -76,8 +76,8 @@ Now Ui Kit Angular
 │   │   │   ├── landing
 │   │   │   │   ├── landing.component.html
 │   │   │   │   ├── landing.component.scss
-│   │   │   │   ├── landing.component.spec.ts
-│   │   │   │   └── landing.component.ts
+│   │   │   │   ├── admin.component.spec.ts
+│   │   │   │   └── admin.component.ts
 │   │   │   ├── login
 │   │   │   │   ├── login.component.html
 │   │   │   │   ├── login.component.scss

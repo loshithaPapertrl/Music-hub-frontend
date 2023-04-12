@@ -4,6 +4,7 @@ import {RegisterService} from "../../services/register-service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ProfileServiceService} from "../../services/profile-service.service";
 import {DomSanitizer} from "@angular/platform-browser";
+import Swal from "sweetalert2";
 
 @Component({
     selector: 'app-profileconfig',
@@ -19,9 +20,9 @@ export class ProfileConfigComponent implements OnInit {
     focus;
     focus1;
     saveProfileDetail:FormGroup;
+    savePosts:FormGroup;
     private profilePicture: any;
     user:any = {};
-    savePost:FormGroup;
 
     constructor(public formBuilder: FormBuilder, private sanitizer: DomSanitizer,
                 public registerService: RegisterService,public profileServiceService: ProfileServiceService) {
@@ -37,11 +38,11 @@ export class ProfileConfigComponent implements OnInit {
           talentCategory:[null]
         });
 
-        this.savePost=this.formBuilder.group({
-            postType:[null],
+        this.savePosts = this.formBuilder.group({
             postContent:[],
-            about:[null]
-        })
+            postType:[],
+            about:[]
+        });
     }
 
     ngOnInit() {
@@ -62,16 +63,39 @@ export class ProfileConfigComponent implements OnInit {
 
     saveProfile(){
         this.registerService.saveProfile(this.saveProfileDetail.value).subscribe((res: any) => {
-            console.log(res)
+            // console.log(res)
+            if (res.status==200){
+                Swal.fire('Config Successfully', '', 'success');
+                this.saveProfileDetail.reset();
+            }
         }, error => {
+        });
+    }
+
+    savePost() {
+        this.registerService.savePost(this.savePosts.value).subscribe((res: any) => {
+            if (res.status==200){
+                Swal.fire('Posted Successfully', '', 'success');
+                this.savePosts.reset();
+            }
+            // console.log(res)
+        },error => {
         });
     }
 
     uploadProf(event: any) {
         const file: File = event.target.files[0];
-        console.log(file)
+        // console.log(file)
         this.saveProfileDetail.patchValue({
             profilePicture: file
+        })
+    }
+
+    uploadImageAsAPost(event: any) {
+        const file: File = event.target.files[0];
+        // console.log(file)
+        this.savePosts.patchValue({
+            postContent: file
         })
     }
 
@@ -103,10 +127,6 @@ export class ProfileConfigComponent implements OnInit {
         return 'data:image/png;base64,' + window.btoa(binary);
     }
 
-    onClickPost() {
-        this.registerService.savePost(this.saveProfileDetail.value).subscribe((res: any) => {
-            console.log(res)
-        }, error => {
-        });
-    }
+
+
 }

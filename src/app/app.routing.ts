@@ -11,6 +11,7 @@ import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.compo
 import {ProfileConfigComponent} from "./auth/profile-config/profilecofig.component";
 import {UserAccountsComponent} from "./auth/user-accounts/user-accounts.component";
 import {UserprofileComponent} from "./auth/user-profile/userprofile.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes =[
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes =[
     { path: 'account/profile',     component: ProfileComponent },
     { path: 'account/profile-cofig',     component: ProfileConfigComponent },
     { path: 'user-accounts',     component: UserAccountsComponent },
-    { path: 'user-profile',     component: UserprofileComponent }
+    { path: 'user-profile',     component: UserprofileComponent },
+    { path: 'admin',     component: AdminComponent }
 ];
 
 @NgModule({

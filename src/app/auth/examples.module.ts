@@ -16,6 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {UserAccountsComponent} from "./user-accounts/user-accounts.component";
 import {RouterLink} from "@angular/router";
 import {UserprofileComponent} from "./user-profile/userprofile.component";
+import {AdminComponent} from "../admin/admin.component";
 
 @NgModule({
     imports: [
@@ -38,7 +39,8 @@ import {UserprofileComponent} from "./user-profile/userprofile.component";
         ProfileComponent,
         ProfileConfigComponent,
         UserAccountsComponent,
-        UserprofileComponent
+        UserprofileComponent,
+        AdminComponent
     ],
     providers: [RegisterService]
 })

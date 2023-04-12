@@ -40,4 +40,14 @@ export class RegisterService {
         return this.http.get('http://localhost:8080/user/getAllTalentCategories',
             {observe: 'response', withCredentials: true});
     }
+
+    savePost(postDto){
+        const formData1 = new FormData();
+        formData1.append('postType', postDto.postType);
+        formData1.append('postContent', postDto.postContent);
+        formData1.append('about', postDto.about);
+
+        return this.http.post('http://localhost:8080/api/v1/auth/save_talents_as_a_post',
+            formData1, {observe: 'response', withCredentials: true});
+    }
 }
