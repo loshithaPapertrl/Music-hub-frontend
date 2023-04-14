@@ -19,7 +19,7 @@
                         <p>Followings</p>
                     </div>
                     <div class="social-description">
-                        <h2>9.5</h2>
+                        <h2>{{viewRating}}</h2>
                         <p>Ratings</p>
                     </div>
                 </div>
@@ -30,10 +30,10 @@
         <div class="container mt-5">
           <div class="button-container">
               <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
-              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on youtube">
+              <a [href]="user.youtubeLink" target=”_blank” class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on youtube">
                 <i class="fab fa-youtube"></i>
               </a>
-              <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+              <a [href]="user.spotifyLink" target=”_blank” class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
                 <i class="fab fa-spotify"></i>
               </a>
           </div>
@@ -48,11 +48,8 @@
                             <button class="see-review" (click)="toggleReviews()">See all reviews</button>
                             <div class="review" *ngIf="showReviews">
                                 <div class="item" *ngFor="let review of reviews">
-                                    <div class="card card-testimonial">
+                                    <div class="card card-testimonial" style="border: 1px solid #e95e38">
                                         <div class="card-avatar">
-                                            <a href="#pablo">
-                                                <img class="img rounded-circle" src="https://randomuser.me/api/portraits/women/33.jpg" alt="...">
-                                            </a>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{review.reviewerName}}</h5>
@@ -98,28 +95,31 @@
                                     </div>
                                 </div>
                                 <!--   post here-->
+
                                 <!-- mp3 as post-->
 
-                                <div class="post">
+                                <div class="post" *ngFor="let audio of audios">
                                     <div class="post-header">
                                         <img [src]=" user.profilePicture" alt="Profile Picture" class="rounded-circle" style="height: 50px; width: 50px;">
                                         <div class="post-info ml-3">
-                                            <h3>loshitha</h3>
+                                            <h3>{{user.username}}</h3>
                                             <p>2 hours ago</p>
                                         </div>
                                     </div>
                                     <div class="post-body">
                                         <p> first song </p>
-                                        <div class="post-actions mt-3">
-                                            <audio controls>
-                                                <source type="audio/mpeg">
-                                                Your browser does not support the audio element.
+                                        <div class="post-actions mt-3 player ">
+                                            <audio controls >
+                                                <source [src]="audio.path" type="audio/mpeg">
                                             </audio>
+<!--                                            <ngx-audio-player src autoPlay="false">-->
+
+<!--                                            </ngx-audio-player>-->
                                         </div>
-                                        <div class="comment">
-                                            <div class="comment-info ml-3">
-                                                <h6>kasun</h6>
-                                                <p>nice one!!!</p>
+                                        <div class="comment" *ngFor="let comment of audio.comments">
+                                            <div class="comment-info ml-3 ">
+                                                <h6>{{comment.commentedBy}}</h6>
+                                                <p>{{comment.comment}}</p>
                                             </div>
                                         </div>
                                         <div class="comment-bar mt-3">

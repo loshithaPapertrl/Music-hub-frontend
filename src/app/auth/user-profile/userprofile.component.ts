@@ -4,6 +4,7 @@ import {ProfileServiceService} from "../../services/profile-service.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../../services/auth-service.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-userprofile',
@@ -76,11 +77,14 @@ export class UserprofileComponent implements OnInit {
   comments: [] = [];
   audioByteArray: Uint8Array;
   userId:any
+  audios: any[] = [];
+  rating: any;
+  reviewText: any;
+  viewRating:any
 
 
-
-  constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer,private activeRoute: ActivatedRoute,public authService: AuthService) {
-    this.getReviews();
+  constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer
+              ,private activeRoute: ActivatedRoute,public authService: AuthService) {
   }
 
   ngOnInit() {
@@ -94,6 +98,7 @@ export class UserprofileComponent implements OnInit {
     this.getProfileDetails();
     this.getPosts();
     this.getReviews();
+    this.getRatingAsVisitor();
   }
 
   ngOnDestroy() {
@@ -113,7 +118,13 @@ export class UserprofileComponent implements OnInit {
 
   getPosts() {
     this.profileServiceService.getPosts(this.userId).subscribe((res: any) => {
-      this.posts = res.body
+      res.body.forEach(e => {
+        if (e.postType == 'IMAGE') {
+          this.posts.push(e)
+        }else {
+          this.audios.push(e)
+        }
+      })
       this.posts.forEach(post => {
         this.comments=post.comments
       })
@@ -169,5 +180,50 @@ export class UserprofileComponent implements OnInit {
 
   toggleReviews() {
     this.showReviews = !this.showReviews;
+  }
+
+  Comment(id: any, value: string) {
+    // Add the new comment using the comment service
+    this.profileServiceService.comment(id,this.user.artistName,value).subscribe((res: any) => {
+      if (res.status==200){
+        Swal.fire('Commented', '', 'success');
+        this.posts =[];
+        this.audios=[];
+        this.getPosts();
+      }
+    }, error => {
+    });
+  }
+
+  submitReview() {
+    const ratingValue = Number(this.rating); // Convert the rating to a number
+    const review = {
+      reviewText: this.reviewText,
+      reviewedUserId: this.userId,
+      marks: ratingValue
+    };
+
+    this.profileServiceService.saveReview(review).subscribe(
+        response => {
+          if (response.status==200){
+            Swal.fire('Review saved successfully', '', 'success');
+            this.reviewText = ''; // Clear the input field
+            this.rating = ''; // Clear the rating
+            // Call a function to refresh the reviews list
+            this.getReviews();
+            this.getRatingAsVisitor();
+          }
+        },
+        error => {
+          console.error('Error saving review:', error);
+        }
+    );
+  }
+
+  getRatingAsVisitor(){
+    this.profileServiceService.getRatingByVisitor(this.userId).subscribe((res: any) => {
+      this.viewRating = res.body
+    }, error => {
+    });
   }
 }

@@ -129,12 +129,8 @@
                 <div class="card-body">
                     <form [formGroup]="savePosts">
                         <div class="form-group">
-                            <label for="timelineImage">Image (JPG or PNG)</label>
-                            <input type="file" class="form-control-file" id="timelineImage" accept="image/jpeg,image/png" formControlName="postContent" (change)="uploadImageAsAPost($event)">
-                        </div>
-                        <div class="form-group">
-                            <label for="timelineAudio">Audio (MP3)</label>
-                            <input type="file" class="form-control-file" id="timelineAudio" accept="audio/mp3">
+                            <label for="timelineImage">Talent</label>
+                            <input type="file" class="form-control-file" id="timelineImage" accept="*" formControlName="postContent" (change)="uploadImageAsAPost($event)">
                         </div>
 
                         <div class="uk-margin p-40" >

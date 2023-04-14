@@ -19,7 +19,7 @@
                         <p>Followings</p>
                     </div>
                     <div class="social-description">
-                        <h2>9.5</h2>
+                        <h2>{{viewRating}}</h2>
                         <p>Ratings</p>
                     </div>
                 </div>
@@ -46,24 +46,24 @@
                         <div class="row add-review" *ngIf="authService.isLoggedIn()">
 
                             <div class="col-12">
-                                <div class="comment-box ml-2">
+                                <div class="comment-box ml-2" >
                                     <h4>Add Your Recommendation</h4>
 
                                     <div class="rating">
-                                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                        <input type="radio" name="rating" value="5" id="5"  [(ngModel)]="rating"><label for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4"  [(ngModel)]="rating"><label for="4">☆</label>
+                                        <input type="radio" name="rating" value="3" id="3"  [(ngModel)]="rating"><label for="3">☆</label>
+                                        <input type="radio" name="rating" value="2" id="2"  [(ngModel)]="rating"><label for="2">☆</label>
+                                        <input type="radio" name="rating" value="1" id="1"  [(ngModel)]="rating"><label for="1">☆</label>
                                     </div>
                                     <div class="comment-area">
-                                        <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea>
+                                        <textarea class="form-control" placeholder="what is your view?" rows="4" [(ngModel)]="reviewText"></textarea>
                                     </div>
                                     <div class="comment-btns mt-2">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="pull-right">
-                                                    <button class="btn btn-success send btn-sm">Submit <i class="fa fa-long-arrow-right ml-1"></i></button>
+                                                    <button class="btn btn-success send btn-sm" (click)="submitReview()">Submit <i class="fa fa-long-arrow-right ml-1"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,11 +80,8 @@
                             <button class="see-review" (click)="toggleReviews()">See all reviews</button>
                             <div class="review" *ngIf="showReviews">
                                 <div class="item" *ngFor="let review of reviews">
-                                    <div class="card card-testimonial">
+                                    <div class="card card-testimonial" style="border: 1px solid #e95e38">
                                         <div class="card-avatar">
-                                            <a href="#pablo">
-                                                <img class="img rounded-circle" src="https://randomuser.me/api/portraits/women/33.jpg" alt="...">
-                                            </a>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{review.reviewerName}}</h5>
@@ -132,43 +129,47 @@
                                         </div>
                                         <div class="comment-bar mt-3">
                                             <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
-                                            <input type="text" class="form-control ml-3" placeholder="Write a comment...">
-                                            <button class="btn btn-primary btn-sm ml-3">Post</button>
+                                            <input #comment id="txt-comments" type="text" placeholder="Write a comment...">
+                                            <button class="btn btn-primary btn-sm ml-3" type="submit" (click)="Comment(post.id,comment.value); comment.value=''">Post</button>
                                         </div>
                                     </div>
                                 </div>
                                 <!--   post here-->
                                 <!-- mp3 as post-->
 
-                                <div class="post">
+                                <div class="post" *ngFor="let audio of audios">
                                     <div class="post-header">
                                         <img [src]=" user.profilePicture" alt="Profile Picture" class="rounded-circle" style="height: 50px; width: 50px;">
                                         <div class="post-info ml-3">
-                                            <h3>loshitha</h3>
+                                            <h3>{{user.username}}</h3>
                                             <p>2 hours ago</p>
                                         </div>
                                     </div>
                                     <div class="post-body">
-                                        <p> first song </p>
-                                        <div class="post-actions mt-3">
-                                            <audio controls>
-                                                <source type="audio/mpeg">
-                                                Your browser does not support the audio element.
+                                        <p> {{audio.about}} </p>
+                                        <div class="post-actions mt-3 player ">
+                                            <audio controls >
+                                                <source [src]="audio.path" type="audio/mpeg">
                                             </audio>
+                                            <!--                                            <ngx-audio-player src autoPlay="false">-->
+
+                                            <!--                                            </ngx-audio-player>-->
                                         </div>
-                                        <div class="comment">
-                                            <div class="comment-info ml-3">
-                                                <h6>kasun</h6>
-                                                <p>nice one!!!</p>
+                                        <div class="comment" *ngFor="let comment of audio.comments">
+                                            <div class="comment-info ml-3 ">
+                                                <h6>{{comment.commentedBy}}</h6>
+                                                <p>{{comment.comment}}</p>
                                             </div>
                                         </div>
                                         <div class="comment-bar mt-3">
                                             <img src="https://via.placeholder.com/50" alt="Profile Picture" class="rounded-circle">
-                                            <input type="text" class="form-control ml-3" placeholder="Write a comment...">
-                                            <button class="btn btn-primary btn-sm ml-3">Post</button>
+<!--                                            <input type="text" class="form-control ml-3" placeholder="Write a comment..." [(ngModel)]="newComment">-->
+                                            <input #comment id="txt-comment" type="text" placeholder="Write a comment..." >
+                                            <button class="btn btn-primary btn-sm ml-3" type="submit" (click)="Comment(audio.id,comment.value); comment.value=''">Post</button>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- mp3 as post-->
                             </div>
                         </div>

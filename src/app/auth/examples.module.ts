@@ -16,7 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {UserAccountsComponent} from "./user-accounts/user-accounts.component";
 import {RouterLink} from "@angular/router";
 import {UserprofileComponent} from "./user-profile/userprofile.component";
-import {AdminComponent} from "../admin/admin.component";
+import {NgxAudioPlayerModule} from "ngx-audio-player";
 
 @NgModule({
     imports: [
@@ -30,7 +30,8 @@ import {AdminComponent} from "../admin/admin.component";
             apiKey: 'YOUR_KEY_HERE'
         }),
         ReactiveFormsModule,
-        RouterLink
+        RouterLink,
+        NgxAudioPlayerModule
     ],
     declarations: [
         LandingComponent,
@@ -40,7 +41,6 @@ import {AdminComponent} from "../admin/admin.component";
         ProfileConfigComponent,
         UserAccountsComponent,
         UserprofileComponent,
-        AdminComponent
     ],
     providers: [RegisterService]
 })
