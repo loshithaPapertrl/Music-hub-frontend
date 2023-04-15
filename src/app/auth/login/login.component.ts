@@ -46,7 +46,12 @@ export class LoginComponent implements OnInit {
                         console.log('res',res);
                         this.tokenService.setToken(res.token)
                         localStorage.setItem('token',res.token)
-                        this.router.navigateByUrl('/account/profile-cofig')
+                        console.log(res.role)
+                        if (res.role=='admin'){
+                            this.router.navigateByUrl('/admin')
+                        }else {
+                            this.router.navigateByUrl('/account/profile-cofig')
+                        }
                     }
                 );
     }
