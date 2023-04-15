@@ -64,7 +64,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Select your talent category</label>
-                                    <select class="form-control" id="talent" formControlName="talentCategory">
+                                    <select class="form-control" id="talent" formControlName="talentCategory" [(ngModel)]="user.talentCategory">
                                         <option value="1">Vocalist</option>
                                         <option value="2">Lyricist</option>
                                         <option value="3">Producer</option>
@@ -77,7 +77,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Genres</label>
-                                    <input type="text" class="form-control" id="genres" placeholder="Enter genres" formControlName="genres">
+                                    <input type="text" class="form-control" id="genres" placeholder="Enter genres" formControlName="genres" [(ngModel)]="user.genres">
                                 </div>
                             </div>
                         </div>
@@ -85,19 +85,19 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>About</label>
-                                    <textarea class="form-control" id="about" rows="3" placeholder="Enter about" formControlName="about"></textarea>
+                                    <textarea class="form-control" id="about" rows="3" placeholder="Enter about" formControlName="about" [(ngModel)]="user.about"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Youtube Link</label>
-                                    <input type="text" class="form-control" id="youtubeLink" placeholder="Enter Youtube link" formControlName="youtubeLink">
+                                    <input type="text" class="form-control" id="youtubeLink" placeholder="Enter Youtube link" formControlName="youtubeLink" [(ngModel)]="user.youtubeLink">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Moods</label>
-                                    <input type="text" class="form-control" id="moods" placeholder="Enter moods"  formControlName="moods">
+                                    <input type="text" class="form-control" id="moods" placeholder="Enter moods"  formControlName="moods" [(ngModel)]="user.moods">
                                 </div>
                             </div>
                         </div>
@@ -105,17 +105,19 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Spotify Link</label>
-                                    <input type="text" class="form-control" id="spotifyLink" placeholder="Enter Spotify link" formControlName="spotifyLink">
+                                    <input type="text" class="form-control" id="spotifyLink" placeholder="Enter Spotify link" formControlName="spotifyLink" [(ngModel)]="user.spotifyLink">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Profession</label>
-                                    <input type="text" class="form-control" id="profession" placeholder="Enter simply profession" formControlName="profession">
+                                    <input type="text" class="form-control" id="profession" placeholder="Enter simply profession" formControlName="profession" [(ngModel)]="user.profession">
                                 </div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" (click)="saveProfile()">Save</button>
+
+                        <button type="submit" class="btn btn-primary" (click)="updateProfile()">Update</button>
                     </form>
                 </div>
             </div>
@@ -147,6 +149,7 @@
                             <textarea class="form-control" id="postDescription" name="postDescription" ngModel required formControlName="about"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" (click)="savePost()">Post</button>
+
                     </form>
                 </div>
             </div>

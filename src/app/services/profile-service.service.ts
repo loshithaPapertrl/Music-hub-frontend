@@ -48,7 +48,7 @@ export class ProfileServiceService {
       let requestBody = {
         postId: id,
         comment: newComment,
-        commentedBy: artistName
+        // commentedBy: artistName
       };
       return this.http.post('http://localhost:8080/api/v1/auth/comment_on_a_post',requestBody,
            {observe: 'response', withCredentials: true});

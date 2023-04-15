@@ -72,6 +72,20 @@ export class ProfileConfigComponent implements OnInit {
         });
     }
 
+    updateProfile() {
+
+        this.registerService.updateProfile(this.saveProfileDetail.value).subscribe((res: any) => {
+
+            console.log(this.saveProfileDetail.value)
+            console.log(res)
+            if (res.status==200){
+                Swal.fire('Update Successfully', '', 'success');
+                this.saveProfileDetail.reset();
+            }
+        }, error => {
+        });
+    }
+
     savePost() {
         this.registerService.savePost(this.savePosts.value).subscribe((res: any) => {
             if (res.status==200){
@@ -126,7 +140,5 @@ export class ProfileConfigComponent implements OnInit {
         }
         return 'data:image/png;base64,' + window.btoa(binary);
     }
-
-
-
+    
 }

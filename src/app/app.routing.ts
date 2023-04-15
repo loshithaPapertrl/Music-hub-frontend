@@ -14,8 +14,8 @@ import {UserprofileComponent} from "./auth/user-profile/userprofile.component";
 
 const routes: Routes =[
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
-    { path: 'index',                component: ComponentsComponent },
-    { path: 'nucleoicons',          component: AdminManageUsersComponent },
+    { path: 'admin',                component: ComponentsComponent },
+    { path: 'manage-users',          component: AdminManageUsersComponent },
     { path: 'landing',     component: LandingComponent },
     { path: 'auth/login',       component: LoginComponent },
     { path: 'account/profile',     component: ProfileComponent },
