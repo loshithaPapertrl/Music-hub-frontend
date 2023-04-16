@@ -20,6 +20,7 @@ export class UserAccountsComponent implements OnInit {
   categoryId:any
   private userId: any;
   private isClickOnCategory: boolean = false;
+  searchUser: any;
 
   constructor(private sanitizer: DomSanitizer, public userServiceService:UserServiceService,private activeRoute: ActivatedRoute,private router: Router,) {
 
@@ -55,6 +56,18 @@ export class UserAccountsComponent implements OnInit {
       this.setImageUrl()
     }, error => {
     });
+  }
+
+  searchUsers() {
+    console.log("eeeeeeeeeeeeeeeee")
+    console.log(this.searchUser)
+    if (!this.searchUser) {
+      this.getUsers();
+    } else {
+     this.users= this.users.filter(user => {
+        return user.artistName.toLowerCase().includes(this.searchUser.toLowerCase());
+      });
+    }
   }
 
   setImageUrl() {

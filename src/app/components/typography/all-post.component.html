@@ -7,9 +7,11 @@
         <div class="container mt-5">
             <div class="container">
                 <div class="row">
-                    <div class="profile-nav col-2">
+
+                    <div class="profile-nav col-4">
+                        <a [routerLink]="['/admin']" class="btn btn-primary btn-round btn-lg mr-5" style="position: fixed">Back to Admin</a>
                     </div>
-                    <div class="profile-info col-10 border-left-2">
+                    <div class="profile-info col-8 border-left-2">
                         <div class="panel">
                             <div class="panel-body bio-graph-info">
                                 <!--                                           post here-->
@@ -66,7 +68,9 @@
                                             <button class="btn btn-primary btn-sm ml-3" (click)="deletePost(audio.id)">Delete</button>
                                         </div>
                                     </div>
+
                                 </div>
+
                                 <!-- mp3 as post-->
                             </div>
                         </div>
@@ -74,7 +78,9 @@
                 </div>
             </div>
         </div>
+
     </div>
+
     <footer class="footer footer-default">
         <div class="container">
             <div class="copyright">

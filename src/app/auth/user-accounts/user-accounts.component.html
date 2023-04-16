@@ -16,7 +16,7 @@
                     <h5 class="description">Music Hub is the best free leading music production marketplace, helping musicians worldwide connect and hire top music pros so they can get to great-sounding release-ready songs.</h5>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2"  [(ngModel)]="searchUser" (ngModelChange)="searchUsers()">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2"><i class="now-ui-icons ui-1_zoom-bold"></i></span>
                     </div>
