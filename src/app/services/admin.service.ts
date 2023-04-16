@@ -13,6 +13,11 @@ export class AdminService {
         {observe: 'response', withCredentials: true});
   }
 
+  getAllCounts() {
+    return this.http.get('http://localhost:8080/api/v1/auth/get_all_count',
+        {observe: 'response', withCredentials: true});
+  }
+
   addNote(note: any) {
     let requestBody = {
       note: note

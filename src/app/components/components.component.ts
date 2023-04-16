@@ -32,6 +32,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     state_icon_primary = true;
     adminNote: any;
     notes:[]= []
+    counts:any
 
     constructor( private renderer : Renderer2, config: NgbAccordionConfig,private adminService:AdminService, private sanitizer: DomSanitizer) {
         config.closeOthers = true;
@@ -54,6 +55,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('index-page');
         this.getNotes();
+        this.getAllCounts();
     }
     ngOnDestroy(){
         var navbar = document.getElementsByTagName('nav')[0];
@@ -91,6 +93,15 @@ export class ComponentsComponent implements OnInit, OnDestroy {
                 this.notes=[];
                 this.getNotes();
             }
+        }, error => {
+        });
+    }
+
+    getAllCounts() {
+        // get all notes using the admin service
+        this.adminService.getAllCounts().subscribe((res: any) => {
+            this.counts = res.body
+            console.log(this.counts)
         }, error => {
         });
     }
