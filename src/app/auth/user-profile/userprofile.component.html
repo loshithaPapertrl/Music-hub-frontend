@@ -41,7 +41,20 @@
           <h5 class="description">{{user.about}} </h5>
             <div class="container">
                 <div class="row">
+
+
+
                     <div class="profile-nav col-4">
+
+                <!--  contact-->
+
+                        <form class="form contact">
+                            <h3>CONTACT US</h3>
+                            <p type="Email:">{{user.email}}</p>
+                            <p type="Contact:">{{user.phoneNumber}}</p>
+                        </form>
+
+                <!--  contact-->
                 <!--    Add review-->
                         <div class="row add-review" *ngIf="authService.isLoggedIn()">
 
@@ -89,11 +102,8 @@
                                                 {{review.reviewText}}
                                             </p>
                                             <div class="rating">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
+                                                <span *ngFor="let star of stars" [innerHTML]="star"></span>
+                                                {{ getStars(review.marks) }}
                                             </div>
                                         </div>
                                     </div>

@@ -81,6 +81,7 @@ export class UserprofileComponent implements OnInit {
   rating: any;
   reviewText: any;
   viewRating:any
+  stars: any[] = [];
 
 
   constructor(public profileServiceService: ProfileServiceService, private sanitizer: DomSanitizer
@@ -140,6 +141,7 @@ export class UserprofileComponent implements OnInit {
   getProfileDetails() {
     this.profileServiceService.getProfileDetailsByVisitor(this.userId).subscribe((res: any) => {
       this.user = res.body
+      console.log(this.user)
       let objectURL = 'data:image/png;base64,' +  this.user.profilePicture;
       this.user.profilePicture = this.sanitizer.bypassSecurityTrustUrl(objectURL);
     }, error => {
@@ -226,4 +228,13 @@ export class UserprofileComponent implements OnInit {
     }, error => {
     });
   }
+
+  getStars(marks: number) {
+    this.stars = Array(marks).fill('&#9733;'); // Unicode character for a filled star
+    const emptyStars = 5 - marks;
+    if (emptyStars > 0) {
+      this.stars = this.stars.concat(Array(emptyStars).fill('&#9734;')); // Unicode character for an empty star
+    }
+  }
+
 }
