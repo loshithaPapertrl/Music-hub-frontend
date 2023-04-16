@@ -41,4 +41,8 @@ export class AdminService {
         {observe: 'response', withCredentials: true});
   }
 
+  deletePost(postId:any){
+    return this.http.delete('http://localhost:8080/api/v1/auth/delete_post',
+        {params:{postId: postId},observe: 'response', withCredentials: true});
+  }
 }

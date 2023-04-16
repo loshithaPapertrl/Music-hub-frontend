@@ -1,0 +1,87 @@
+<div class="wrapper">
+    <div class="page-header page-header-small" filter-color="orange">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('assets/img/bg5.jpg') ;">
+        </div>
+    </div>
+    <div class="section">
+        <div class="container mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="profile-nav col-2">
+                    </div>
+                    <div class="profile-info col-10 border-left-2">
+                        <div class="panel">
+                            <div class="panel-body bio-graph-info">
+                                <!--                                           post here-->
+                                <div class="post" *ngFor="let post of posts ">
+                                    <div class="post-header">
+                                        <div class="post-info ml-3">
+                                            <h3>{{post.userName}}</h3>
+                                            <p>{{post.postDate}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="post-body">
+                                        <p> {{post.about}} </p>
+                                        <!--                                        <div [style.backgroundImage]="'url('+ post.logoUrl +')'"></div>-->
+                                        <img [src]=" post.logoUrl" alt="Post Image" class="w-100">
+                                        <div class="comment" *ngFor="let comment of post.comments">
+                                            <div class="comment-info ml-3">
+                                                <h6>{{comment.commentedBy}}</h6>
+                                                <p>{{comment.comment}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment-bar mt-3">
+                                            <button class="btn btn-primary btn-sm ml-3" (click)="deletePost(post.id)">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--   post here-->
+
+                                <!-- mp3 as post-->
+
+                                <div class="post" *ngFor="let audio of audios">
+                                    <div class="post-header">
+                                        <div class="post-info ml-3">
+                                            <h3>{{audio.userName}}</h3>
+                                            <p>{{audio.postDate}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="post-body">
+                                        <p> first song </p>
+                                        <div class="post-actions mt-3 player ">
+                                            <audio controls >
+                                                <source [src]="audio.path" type="audio/mpeg">
+                                            </audio>
+                                            <!--                                            <ngx-audio-player src autoPlay="false">-->
+
+                                            <!--                                            </ngx-audio-player>-->
+                                        </div>
+                                        <div class="comment" *ngFor="let comment of audio.comments">
+                                            <div class="comment-info ml-3 ">
+                                                <h6>{{comment.commentedBy}}</h6>
+                                                <p>{{comment.comment}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment-bar mt-3">
+                                            <button class="btn btn-primary btn-sm ml-3" (click)="deletePost(audio.id)">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- mp3 as post-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer footer-default">
+        <div class="container">
+            <div class="copyright">
+                &copy;
+                {{data | date: 'yyyy'}}, Designed and Coded by Loshitha hasaral
+
+            </div>
+        </div>
+    </footer>
+</div>

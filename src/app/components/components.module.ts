@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { BasicelementsComponent } from './basicelements/basicelements.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { TypographyComponent } from './typography/typography.component';
+import { AllPostComponent } from './typography/all-post.component';
 import { AdminManageUsersComponent } from './user-management/admin-manage-users-componaent.component';
 import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -27,7 +27,7 @@ import { NgbdModalBasic } from './modal/modal.component';
         ComponentsComponent,
         BasicelementsComponent,
         NavigationComponent,
-        TypographyComponent,
+        AllPostComponent,
         AdminManageUsersComponent,
         NotificationComponent,
         NgbdModalBasic

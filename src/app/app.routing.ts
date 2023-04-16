@@ -11,6 +11,7 @@ import { AdminManageUsersComponent } from './components/user-management/admin-ma
 import {ProfileConfigComponent} from "./auth/profile-config/profilecofig.component";
 import {UserAccountsComponent} from "./auth/user-accounts/user-accounts.component";
 import {UserprofileComponent} from "./auth/user-profile/userprofile.component";
+import {AllPostComponent} from "./components/typography/all-post.component";
 
 const routes: Routes =[
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes =[
     { path: 'account/profile',     component: ProfileComponent },
     { path: 'account/profile-cofig',     component: ProfileConfigComponent },
     { path: 'user-accounts',     component: UserAccountsComponent },
-    { path: 'user-profile',     component: UserprofileComponent }
+    { path: 'user-profile',     component: UserprofileComponent },
+    { path: 'all-post',     component: AllPostComponent }
 ];
 
 @NgModule({

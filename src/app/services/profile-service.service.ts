@@ -28,6 +28,11 @@ export class ProfileServiceService {
           {observe: 'response', withCredentials: true});
     }
 
+  getAllPosts() {
+    return this.http.get('http://localhost:8080/api/v1/auth/get_all_post',
+        {observe: 'response', withCredentials: true});
+  }
+
   getPersonalAudioPosts() {
     return this.http.get('http://localhost:8080/api/v1/auth/get_audios_as_post',
         {observe: 'response', withCredentials: true});
