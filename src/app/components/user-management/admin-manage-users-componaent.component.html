@@ -14,14 +14,18 @@
                                 <div class="col col-2"> Phone number </div>
                                 <div class="col col-3"> Email </div>
                                 <div class="col col-4"> Profession </div>
-                                <div class="col col-4"> Category Name </div>
+                                <div class="col col-5"> Category Name </div>
+                                <div class="col col-6"> Category Name </div>
+
                             </li>
                             <li class="table-row" *ngFor="let user of users">
-                                <div class="col col-1" data-label="Job Id">{{user.artistName}}</div>
-                                <div class="col col-2" data-label="Customer Name">{{user.phoneNumber}}</div>
-                                <div class="col col-3" data-label="Amount">{{user.email}}</div>
-                                <div class="col col-4" data-label="Payment Status">{{user.profession}}</div>
-                                <div class="col col-4" data-label="Payment Status">{{user.categoryName}}</div>
+                                <div class="col col-1" data-label="artist name">{{user.artistName}}</div>
+                                <div class="col col-2" data-label="phone number">{{user.phoneNumber}}</div>
+                                <div class="col col-3" data-label="email">{{user.email}}</div>
+                                <div class="col col-4" data-label="profession">{{user.profession}}</div>
+                                <div class="col col-5" data-label="category name">{{user.categoryName}}</div>
+                                <input type="checkbox" class="btn-check" id="btn-check-outlined" id="{{user.id}}" [checked]="user.isActive"
+                                       (change)="toggleUserStatus(user.id)">
                             </li>
                         </ul>
                     </div>
@@ -30,5 +34,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container back">
+        <a href="/admin" class="btn btn-primary btn-round btn-lg  fixed-button">Back to Admin</a>
     </div>
 </div>

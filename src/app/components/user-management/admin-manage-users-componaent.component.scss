@@ -36,16 +36,22 @@
             box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
         }
         .col-1 {
-            flex-basis: 10%;
+            flex-basis: 17%;
         }
         .col-2 {
-            flex-basis: 40%;
+            flex-basis: 17%;
         }
         .col-3 {
-            flex-basis: 25%;
+            flex-basis: 17%;
         }
         .col-4 {
-            flex-basis: 25%;
+            flex-basis: 17%;
+        }
+        .col-5 {
+            flex-basis: 17%;
+        }
+        .col-6 {
+            flex-basis: 15%;
         }
 
         @media all and (max-width: 767px) {
@@ -80,3 +86,14 @@
 }
 
 //user table
+
+.back{
+    position: relative;
+    height: 400px; /* set height of container */
+    .fixed-button {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        border: none;
+    }
+}

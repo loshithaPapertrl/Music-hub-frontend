@@ -30,4 +30,15 @@ export class AdminService {
     return this.http.delete('http://localhost:8080/api/v1/auth/delete_note',
         {params:{noteId: noteId},observe: 'response', withCredentials: true});
   }
+
+  updateUserStatus(id:any,isActive:any){
+
+    let requestBody = {
+      id: id,
+      isActive:isActive
+    };
+    return this.http.put('http://localhost:8080/api/v1/auth/update_user_status',requestBody,
+        {observe: 'response', withCredentials: true});
+  }
+
 }

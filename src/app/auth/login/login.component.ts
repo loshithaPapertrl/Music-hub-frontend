@@ -3,6 +3,7 @@ import {AuthService} from "../../services/auth-service.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TokenService} from "../../services/token.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -47,6 +48,10 @@ export class LoginComponent implements OnInit {
                         this.tokenService.setToken(res.token)
                         localStorage.setItem('token',res.token)
                         console.log(res.role)
+                        if (res.isActive==false){
+                            Swal.fire('Your account suspended', '', 'warning');
+                            return;
+                        }
                         if (res.role=='admin'){
                             this.router.navigateByUrl('/admin')
                         }else {
