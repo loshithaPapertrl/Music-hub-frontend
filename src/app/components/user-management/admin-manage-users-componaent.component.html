@@ -1,12 +1,12 @@
 <div class="main ">
-    <div class="section section-images">
+    <div class="section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
                     <!--                    users table -->
 
-                    <div class="container user-table">
+                    <div class="container user-table" id="my-section" >
                         <h2>Active users</h2>
                         <ul class="responsive-table">
                             <li class="table-header">
@@ -31,11 +31,48 @@
                     </div>
 
                     <!--                    users table -->
+
+<!--                        <h2>Active users</h2>-->
+<!--                        <table >-->
+<!--                            <tr>-->
+<!--                                <th style="min-width: 100px; text-align: left">Artist Name</th>-->
+<!--                                <th style="min-width: 100px; text-align: left">Phone number</th>-->
+<!--                                <th style="min-width: 100px; text-align: left">Email</th>-->
+<!--                                <th style="min-width: 100px; text-align: right">Profession</th>-->
+<!--                                <th style="min-width: 100px; text-align: right">Category Name</th>-->
+<!--                                <th style="min-width: 100px; text-align: left">Category Name</th>-->
+<!--                            </tr>-->
+<!--                            <ng-template style="z-index: 1000">-->
+<!--                                <tr *ngFor="let user of users">-->
+<!--                                    <td style="min-width: 100px; text-align: left">{{user.artistName}}</td>-->
+<!--                                    <td style="min-width: 100px; text-align: left">{{user.phoneNumber}}</td>-->
+<!--                                    <td style="min-width: 100px;text-align: left">{{user.email}}</td>-->
+<!--                                    <td style="min-width: 100px;text-align: right">{{user.profession}}</td>-->
+<!--                                    <td style="min-width: 100px;text-align: right">{{user.categoryName}}</td>-->
+<!--&lt;!&ndash;                                    <input type="checkbox" class="btn-check" id="btn-check-outlined" id="{{user.id}}" [checked]="user.isActive"&ndash;&gt;-->
+<!--&lt;!&ndash;                                           (change)="toggleUserStatus(user.id)">&ndash;&gt;-->
+<!--                                </tr>-->
+<!--                            </ng-template>-->
+<!--                        </table>-->
+
                 </div>
+
             </div>
         </div>
     </div>
-    <div class="container back">
-        <a href="/admin" class="btn btn-primary btn-round btn-lg  fixed-button">Back to Admin</a>
+    <div class="row">
+        <div class="col-2">
+            <div class="container back">
+                <a href="/admin" class="btn btn-primary btn-round btn-lg  fixed-button">Back to Admin</a>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="container back" (click)="generatePDF()">
+                <a class="btn btn-primary btn-round btn-lg  fixed-button">Generate PDF</a>
+            </div>
+        </div>
     </div>
+
+<!--    <button >Generate PDF</button>-->
+
 </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject, Renderer2, ElementRef, OnDestroy } from '@angular/core';
 import {AdminService} from "../../services/admin.service";
+import * as jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+
 
 @Component({
     selector: 'app-nucleoicons',
@@ -51,5 +54,20 @@ export class AdminManageUsersComponent implements OnInit, OnDestroy {
 
         })
         // TODO: Make API call to update user's active status
+    }
+
+    generatePDF() {
+        // const doc = new jsPDF.default();
+        // const section = document.getElementById('my-section');
+        // const sectionText = section.textContent; doc.text(sectionText, 0, 0); doc.save('section.pdf');
+        const section = document.getElementById('my-section');
+        html2canvas(section).then((canvas) => {
+
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF.default('p', 'mm', 'a4');
+            const imgProps = pdf.getImageProperties(imgData);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight); pdf.save('section.pdf'); });
     }
 }
