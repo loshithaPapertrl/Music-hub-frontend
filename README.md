@@ -1,4 +1,4 @@
-# [Music Hub]() [![version][version-badge]][CHANGELOG]
+# [Music Hub]()
 
 ## Terminal Commands
 
